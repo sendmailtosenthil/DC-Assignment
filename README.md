@@ -22,3 +22,10 @@ How to use?
 
 Play with it.
 
+References
+	https://www.cs.rutgers.edu/~pxk/rutgers/notes/content/ra-sunrpc.pdf  -> Good to understand
+	http://docs.freebsd.org/44doc/psd/23.rpc/paper.pdf -> More information about RPC internals
+	http://www.eng.auburn.edu/cse/classes/cse605/examples/rpc/stevens/SUNrpc.html - Sample date program
+	http://stackoverflow.com/questions/10448696/error-on-trying-to-run-a-simple-rpc-progarm - Any error in running simple RPC
+	http://www.tutorialspoint.com/compile_c_online.php - Online C compiler to play with
+	https://cs.nyu.edu/courses/spring00/V22.0480-002/class07.html -> Data structures available in RPC
