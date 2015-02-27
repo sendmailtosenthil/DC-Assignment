@@ -22,33 +22,18 @@ CLIENT* createClient(char* host){
 void dict_1(CLIENT* clnt, char op)
 {
 	char word[250];	
-	char operation[15];
-	switch(op){
-		case 'I' : 
-			strcpy(operation, "Insert");
-			break;
-		case 'S':
-			strcpy(operation, "Search");
-			break;
-		case 'D':
-			strcpy(operation, "Delete");
-			break;
-		default:
-			printf("Unknown Operation, supported (Insert, Search & Delete) Known operations I | S | D\n");
-			return;		
-	}
-	printf("Enter word for %s :", operation);
+	printf("Word :");
 	scanf("%s", word);
 
 	switch(op){
 		case 'I' : {
 				char meaning[1000];
 
-				printf("Enter Meaning :");
+				printf("Meaning :");
 				scanf(" %[^\n]", meaning);				
 
-				WordWithMeaning* wwm;
-				wwm = (WordWithMeaning*) malloc(sizeof(WordWithMeaning));
+				WM* wwm;
+				wwm = (WM*) malloc(sizeof(WM));
 				wwm->word = (char*) malloc(sizeof(char) * strlen(word));
 				strcpy(wwm->word, word);
 				wwm->meaning = (char*) malloc(sizeof(char) * strlen(meaning));
@@ -58,8 +43,7 @@ void dict_1(CLIENT* clnt, char op)
 				if (output == (char **) NULL) {
 					clnt_perror (clnt, "call failed");
 				}
-
-				printf("Added [%s] to dictionary", *output);
+				
 				break;
 			}
 		case 'S' : {
@@ -67,7 +51,7 @@ void dict_1(CLIENT* clnt, char op)
 				if (output == (char **) NULL) {
 					clnt_perror (clnt, "call failed");
 				}
-				printf("For [%s], meaning is [%s]", word, *output);
+				printf("%s", *output);				
 				break;
 			}
 		case 'D': {
@@ -77,13 +61,11 @@ void dict_1(CLIENT* clnt, char op)
 				}
 				if(strcmp(*output,"") == 0){
 					printf("Not found [%s] to delete", word);	
-				}else{
-					printf("Deleted [%s] from dictionary", word);
 				}
 				break;
 			}
 		default: {
-			printf("Unknown Operation, supported (Insert, Search & Delete) Known operations I | S | D\n");
+			printf("Unknown Operation\n");
 			break;
 		}
 	};
@@ -99,13 +81,11 @@ int main (int argc, char *argv[])
 	char inputWord[250];
 	char inputMeaning[1000];
 
-	printf("To quit the app, press Ctrl+C\n");
-	printf("Enter the server hostname :");
+	printf("Hostname :");
 	scanf("%100[^\n]", host);
 	
 	CLIENT* clnt = createClient(host);
 
-	printf("Provide Your options to work on Dictionary App");
 	while(1) {
 		printf("\nI for Insert, S for Search, D for Delete :");
 		scanf(" %c", &inputOption);

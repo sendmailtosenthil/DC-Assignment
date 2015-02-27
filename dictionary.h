@@ -14,19 +14,19 @@ extern "C" {
 #endif
 
 
-struct WordWithMeaning {
+struct WM {
 	char *word;
 	char *meaning;
 };
-typedef struct WordWithMeaning WordWithMeaning;
+typedef struct WM WM;
 
 #define DICTIONARY 0x3a3afeeb
 #define DICTIONARY_VER 1
 
 #if defined(__STDC__) || defined(__cplusplus)
 #define newWord 1
-extern  char ** newword_1(WordWithMeaning *, CLIENT *);
-extern  char ** newword_1_svc(WordWithMeaning *, struct svc_req *);
+extern  char ** newword_1(WM *, CLIENT *);
+extern  char ** newword_1_svc(WM *, struct svc_req *);
 #define searchWord 2
 extern  char ** searchword_1(char **, CLIENT *);
 extern  char ** searchword_1_svc(char **, struct svc_req *);
@@ -51,10 +51,10 @@ extern int dictionary_1_freeresult ();
 /* the xdr functions */
 
 #if defined(__STDC__) || defined(__cplusplus)
-extern  bool_t xdr_WordWithMeaning (XDR *, WordWithMeaning*);
+extern  bool_t xdr_WM (XDR *, WM*);
 
 #else /* K&R C */
-extern bool_t xdr_WordWithMeaning ();
+extern bool_t xdr_WM ();
 
 #endif /* K&R C */
 

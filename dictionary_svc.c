@@ -20,7 +20,7 @@ static void
 dictionary_1(struct svc_req *rqstp, register SVCXPRT *transp)
 {
 	union {
-		WordWithMeaning newword_1_arg;
+		WM newword_1_arg;
 		char *searchword_1_arg;
 		char *deleteword_1_arg;
 	} argument;
@@ -34,7 +34,7 @@ dictionary_1(struct svc_req *rqstp, register SVCXPRT *transp)
 		return;
 
 	case newWord:
-		_xdr_argument = (xdrproc_t) xdr_WordWithMeaning;
+		_xdr_argument = (xdrproc_t) xdr_WM;
 		_xdr_result = (xdrproc_t) xdr_wrapstring;
 		local = (char *(*)(char *, struct svc_req *)) newword_1_svc;
 		break;

@@ -6,7 +6,7 @@
 #include "dictionary.h"
 
 bool_t
-xdr_WordWithMeaning (XDR *xdrs, WordWithMeaning *objp)
+xdr_WM (XDR *xdrs, WM *objp)
 {
 	register int32_t *buf;
 
